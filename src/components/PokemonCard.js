@@ -29,14 +29,10 @@ export default function PokemonCard(props) {
             <View style={styles.card}>
                 <View style={styles.spacing}>
                     <View style={bgStyles}>
-                        <Text style={styles.number}>
-                            #{`${pokemon.order}`.padStart(3, 0)}
-                        </Text>
                         <Text style={styles.name}>{pokemon.name}</Text>
                         <Image source={{ uri: pokemon.image }} style={styles.image} />
-                        <Text style={styles.type}>{pokemon.type}</Text>
                         <View style={styles.pill}>
-                            <Text style={styles.move}>{pokemon.move}</Text>
+                            <Text style={styles.move}>#{`${pokemon.order}`.padStart(3, 0)}</Text>
                         </View>
                     </View>
                 </View>
@@ -70,9 +66,10 @@ const styles = StyleSheet.create({
     name: {
         color: "#fff",
         fontWeight: "bold",
-        fontSize: 16,
-        paddingTop: 6,
+        fontSize: 18,
+        paddingTop: 2,
         textTransform: 'capitalize',
+        alignSelf: 'center',
     },
     image: {
         position: "absolute",
@@ -92,10 +89,10 @@ const styles = StyleSheet.create({
     move: {
         color: "#fff",
         fontWeight: "bold",
-        fontSize: 8,
+        fontSize: 14,
         textTransform: 'capitalize',
-        paddingHorizontal: 6,
-        marginTop: 58,
+        paddingHorizontal: 25,
+        marginTop: 60,
 
     },
 });

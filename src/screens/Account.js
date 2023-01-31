@@ -18,7 +18,7 @@ export default function Account() {
     const [image, setImage] = useState(null)
     const [type, setType] = useState(CameraType.back);
     const [permission, requestPermission] = Camera.useCameraPermissions();
-    const [total, setTotal] = useState(10)
+    const [total, setTotal] = useState(0)
 
     const formik = useFormik({
         initialValues: {
@@ -40,7 +40,7 @@ export default function Account() {
                 try {
                     const response = await getPokemonsFavoriteApi();
                     setTotal(response.length);
-                    console.log('este es length....', response.length)
+                    //console.log('este es length....', response.length)
                 } catch (error) {
                     setTotal(0);
                     console.log('aqui esta el error', error)
@@ -73,9 +73,9 @@ export default function Account() {
         // Explore the result
         console.log(result);
 
-        if (!result.cancelled) {
-            formik.setFieldValue("avatar", result.uri)
-            console.log(result.uri);
+        if (!result.canceled) {
+            formik.setFieldValue("avatar", result.url)
+            console.log(result.url);
         }
     }
 
@@ -90,7 +90,7 @@ export default function Account() {
                     <Text style={styles.title}>{`...`}</Text>
                 </View> */}
 
-                <View style={styles.avatar} >
+                {/* <View style={styles.avatar} >
                     <TouchableOpacity onPress={openCamera}>
                         {formik.values.avatar ? null :
                             <Text style={{ marginBottom: 5 }}>Touch pokeball to add your avatar</Text>}
@@ -100,31 +100,31 @@ export default function Account() {
 
                         />
                     </TouchableOpacity>
-                </View>
+                </View> */}
 
-                <View style={styles.dataContent}>
+                {/* <View style={styles.dataContent}>
                     <Text style={styles.itemMenuTitle}>Name:</Text>
                     <TextInput style={styles.input}
                         value={formik.values.name}
                         onChangeText={(text) => formik.setFieldValue("name", text)}
                     />
-                </View>
+                </View> */}
 
-                <View style={styles.dataContent}>
+                {/* <View style={styles.dataContent}>
                     <Text style={styles.itemMenuTitle}>Birthday:</Text>
                     <TextInput
                         style={styles.input}
                         value={formik.values.birthday}
                         onChangeText={(text) => formik.setFieldValue("birthday", text)}
                     />
-                </View>
+                </View> */}
                 <View style={styles.dataContent}>
-                    <Text style={styles.menuTitle}>Pokemons favoritos:</Text>
+                    <Text style={styles.menuTitle}>Favorite pokemons:</Text>
                     <Text style={styles.menuTitle}>{total}</Text>
                 </View>
 
             </View>
-            <View style={styles.btns}>
+            {/* <View style={styles.btns}>
                 <Button style={styles.button}
                     onPress={formik.handleSubmit}
                     title="Save info"
@@ -133,7 +133,7 @@ export default function Account() {
                     onPress={resetInfo}
                     title="Reset info"
                 />
-            </View>
+            </View> */}
         </ScrollView>
     )
 }

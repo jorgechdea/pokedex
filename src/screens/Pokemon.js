@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView, View, SafeAreaView } from 'react-native';
 import { getPokemonDetailsApi } from '../api/pokemon';
 import Icon from "react-native-vector-icons/FontAwesome5";
 // Detail components
@@ -48,14 +48,19 @@ export default function Pokemon(props) {
     if (!pokemonDetail) return null;
 
     return (
-        <ScrollView>
-            <Header name={pokemonDetail.name}
-                order={pokemonDetail.order}
-                type={pokemonDetail.types[0].type.name}
-                image={pokemonDetail.sprites.other["official-artwork"].front_default}
-            />
-            <Type types={pokemonDetail.types} />
-            <Stats stats={pokemonDetail.stats} moves={pokemonDetail.moves} />
-        </ScrollView>
+        <SafeAreaView>
+
+
+            <ScrollView>
+                <Header name={pokemonDetail.name}
+                    order={pokemonDetail.order}
+                    type={pokemonDetail.types[0].type.name}
+                    image={pokemonDetail.sprites.other["official-artwork"].front_default}
+                />
+                <Type types={pokemonDetail.types} />
+                <Stats stats={pokemonDetail.stats} moves={pokemonDetail.moves} />
+            </ScrollView>
+        </SafeAreaView>
+
     )
 }
